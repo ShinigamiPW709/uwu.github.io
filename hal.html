@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Love Confession</title>
+    <title>Eheee</title>
     <style>
         * {
             margin: 0;
@@ -36,6 +36,13 @@
             color: #ff4b6e;
             margin-bottom: 1.5rem;
             font-size: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #ff4b6e;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
 
@@ -92,6 +99,40 @@
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
+        .alert {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border: 2px solid #ff4b6e;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            z-index: 100;
+            text-align: center;
+        }
+
+        .alert h3 {
+            color: #ff4b6e;
+            margin-bottom: 1rem;
+        }
+
+        .alert button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            background: #ff4b6e;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .alert button:hover {
+            background: #ff2b4a;
+        }
+
         @media (max-width: 480px) {
             h1 {
                 font-size: 1.5rem;
@@ -118,21 +159,28 @@
 </head>
 <body>
     <div class="container">
-        <h1>HALLO SAYANG</h1>
+        <h1>Hiii My SanSan</h1>
+        <h2>Jangan klik No yaaa :3</h2>
         <div class="image-container">
-            <img src="https://i.pinimg.com/originals/6b/ca/c3/6bcac3422542bfd8e007aac2e5d1b4aa.gif" alt="EvilicaCell">
+            <img src="kucing.gif" alt="EvilicaCell">
         </div>
-        <div class="question">Mau Ga Jadi Pacar Aku? :3</div>
+        <div class="question">Can you be my Girlfriend?? :3</div>
         <div class="button-container">
-            <button id="By" onclick="handleClick()">Mau</button>
-            <button id="Bn" onclick="move()">Tidak Mau</button>
+            <button id="By" onclick="handleClick()">Yessssss</button>
+            <button id="Bn" onclick="move()">No</button>
         </div>
+    </div>
+
+    <div class="alert" id="customAlert">
+        <h3>Makacihh udah mau nerima aku 💕</h3>
+        <button onclick="closeAlert()">Next</button>
     </div>
 
     <script>
         function handleClick() {
-            alert('Yeay! Aku sayang kamu! 💕');
-            window.location.href = 'hal2.html'; // Ganti dengan URL halaman selanjutnya
+            document.getElementById('customAlert').style.display = 'block';
+            setTimeout(closeAlert, 10000); // Tutup alert otomatis setelah 3 detik
+            // window.location.href = 'hal2.html'; // Ganti dengan URL halaman selanjutnya jika diinginkan
         }
 
         function move() {
@@ -151,6 +199,11 @@
             button.style.left = randomX + 'px';
             button.style.top = randomY + 'px';
             button.style.transform = 'none';
+        }
+
+        function closeAlert() {
+            document.getElementById('customAlert').style.display = 'none';
+            window.location.href = 'hal2.html'; // Ganti dengan URL halaman selanjutnya
         }
     </script>
 </body>

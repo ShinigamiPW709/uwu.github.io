@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eheee</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            width: 600px;
+            position: relative;
+        }
+
+        h1 {
+            color: #ff4b6e;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-container {
+            margin: 2rem 0;
+        }
+
+        .image-container img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .question {
+            font-size: 1.5rem;
+            color: #ff4b6e;
+            margin-bottom: 2rem;
+            font-weight: bold;
+        }
+
+        .button-container {
+            position: relative;
+            height: 150px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        #By, #Bn {
+            position: absolute;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            background: #ff4b6e;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #By {
+            left: 25%;
+            transform: translateX(-50%);
+        }
+
+        #Bn {
+            left: 75%;
+            transform: translateX(-50%);
+        }
+
+        #By:hover {
+            transform: translateX(-50%) scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .alert {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border: 2px solid #ff4b6e;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            z-index: 100;
+            text-align: center;
+        }
+
+        .alert h3 {
+            color: #ff4b6e;
+            margin-bottom: 1rem;
+        }
+
+        .alert button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            background: #ff4b6e;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .alert button:hover {
+            background: #ff2b4a;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .image-container img {
+                max-width: 150px;
+            }
+
+            .question {
+                font-size: 1.2rem;
+            }
+
+            #By, #Bn {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .button-container {
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Jadiiii Beginiiiiii</h1>
+        <div class="image-container">
+            <img src="https://i.pinimg.com/originals/6b/ca/c3/6bcac3422542bfd8e007aac2e5d1b4aa.gif" alt="EvilicaCell">
+        </div>
+        <div class="question">MAUUU TAUUU APA ENGAKKKKKKK!!!!</div>
+        <div class="button-container">
+            <button id="By" onclick="handleClick()">MAUUU!</button>
+            <button id="Bn" onclick="move()">Enggak</button>
+        </div>
+    </div>
+
+    <div class="alert" id="customAlert">
+        <h3>Muehehehe okeee lanjuttttt :3</h3>
+        <button onclick="closeAlert()">Tutup</button>
+    </div>
+
+    <script>
+        function handleClick() {
+            document.getElementById('customAlert').style.display = 'block';
+            setTimeout(closeAlert, 10000); // Tutup alert otomatis setelah 3 detik
+            // window.location.href = 'hal.html'; // Ganti dengan URL halaman selanjutnya jika diinginkan
+        }
+
+        function move() {
+            const container = document.querySelector('.button-container');
+            const button = document.getElementById('Bn');
+            
+            const containerRect = container.getBoundingClientRect();
+            const buttonRect = button.getBoundingClientRect();
+            
+            const maxX = containerRect.width - buttonRect.width;
+            const maxY = containerRect.height - buttonRect.height;
+            
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+            
+            button.style.left = randomX + 'px';
+            button.style.top = randomY + 'px';
+            button.style.transform = 'none';
+        }
+
+        function closeAlert() {
+            document.getElementById('customAlert').style.display = 'none';
+            window.location.href = 'hal.html'; // Ganti dengan URL halaman selanjutnya
+        }
+    </script>
+</body>
+</html>
