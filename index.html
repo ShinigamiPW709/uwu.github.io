@@ -1,59 +1,158 @@
-<html>
+<!DOCTYPE html>
+<html lang="id">
 <head>
-<title> Website :3 </title>
-<style type="text/css">
-    body {
-    background-image: url(love.jpeg);
-    background-size: cover;
-
-    
-    }
-</style>
-
-<script type="text/javascript">
-flag=1
-function f1()
-{
-    alert("HAHAHA GABISA NOLAK KAN ")
-}
-function f()
-{
-    if(flag==1)
-        {
-            Bn.style.top=400
-            Bn.style.left=300
-            flag=2
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Confession</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-    else if(flag==2)
-        {
-            Bn.style.top=400
-            Bn.style.left=50
-            flag=3
-        }
-    else if(flag==3)
-        {
-            Bn.style.top=370
-            Bn.style.left=166
-            flag=1
-        }
-}
-</script>
 
+        body {
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            width: 600px;
+            position: relative;
+        }
+
+        h1 {
+            color: #ff4b6e;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-container {
+            margin: 2rem 0;
+        }
+
+        .image-container img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .question {
+            font-size: 1.5rem;
+            color: #ff4b6e;
+            margin-bottom: 2rem;
+            font-weight: bold;
+        }
+
+        .button-container {
+            position: relative;
+            height: 150px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        #By, #Bn {
+            position: absolute;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            background: #ff4b6e;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #By {
+            left: 25%;
+            transform: translateX(-50%);
+        }
+
+        #Bn {
+            left: 75%;
+            transform: translateX(-50%);
+        }
+
+        #By:hover {
+            transform: translateX(-50%) scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .image-container img {
+                max-width: 150px;
+            }
+
+            .question {
+                font-size: 1.2rem;
+            }
+
+            #By, #Bn {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .button-container {
+                height: 120px;
+            }
+        }
+    </style>
 </head>
-<div align="center">
-<link rel="stylesheet" href="style.css">
-<body class="apa">
-<h1> HALLO SAYANG  <h1>
-<img alt="EvilicaCell" src="https://i.pinimg.com/originals/6b/ca/c3/6bcac3422542bfd8e007aac2e5d1b4aa.gif" height="200" />
-<h1 style="#">Mau Ga Jadi Pacar AKu :3 </h1>
-<div id="By" style="position:absolute; left:64px; top:370px; width:210px;
-height:210px;">
-<input type="button" value=" Mau Mau " onClick="f1()" />
-</div>
-<div ID="Bn" style="position:absolute; left:166px; top:370px; width:210px; height:210px;">
-<input type="button" value=" Gak Ah :P " onclick ="f()" />
-</div>
-</div>
+<body>
+    <div class="container">
+        <h1>HALLO SAYANG</h1>
+        <div class="image-container">
+            <img src="https://i.pinimg.com/originals/6b/ca/c3/6bcac3422542bfd8e007aac2e5d1b4aa.gif" alt="EvilicaCell">
+        </div>
+        <div class="question">Mau Ga Jadi Pacar Aku? :3</div>
+        <div class="button-container">
+            <button id="By" onclick="alert('Yeay! Aku sayang kamu! 💕')">Mau</button>
+            <button id="Bn" onclick="move()">Tidak Mau</button>
+        </div>
+    </div>
 
+    <script>
+        function move() {
+            const container = document.querySelector('.button-container');
+            const button = document.getElementById('Bn');
+            
+            // Get container dimensions
+            const containerRect = container.getBoundingClientRect();
+            const buttonRect = button.getBoundingClientRect();
+            
+            // Calculate maximum positions while keeping button inside container
+            const maxX = containerRect.width - buttonRect.width;
+            const maxY = containerRect.height - buttonRect.height;
+            
+            // Generate random positions within container bounds
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+            
+            // Apply new position
+            button.style.left = randomX + 'px';
+            button.style.top = randomY + 'px';
+            
+            // Reset transform to prevent button from shifting
+            button.style.transform = 'none';
+        }
+    </script>
 </body>
 </html>
